@@ -1,6 +1,6 @@
 spring:
   application:
-    name: microservice-with-sb-department-service
+    name: microservice-with-sb-employee-service
 
 server:
   port: 8082
