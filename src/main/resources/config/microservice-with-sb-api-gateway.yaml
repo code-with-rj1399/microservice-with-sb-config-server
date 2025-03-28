@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: microservice-with-sb-api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: microservice-with-sb-department-service
+          uri: lb://microservice-with-sb-department-service
+          predicates:
+            - Path=/departments/**
+        - id: microservice-with-sb-employee-service
+          uri: lb://microservice-with-sb-employee-service
+          predicates:
+            - Path=/employee/**
+
+server:
+  port: 8083
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
